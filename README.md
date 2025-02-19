@@ -247,9 +247,10 @@ This project successfully enables **brain-controlled robotic arm movement** usin
 ![image](https://github.com/user-attachments/assets/43e417a3-28bb-4ed2-b488-74fc4f8d1adb)
 
 # Setup Video
+![Watch the video](https://youtu.be/ZB38iElaanM)
 
 # Controlling Video
-[Watch the video](https://youtu.be/ZB38iElaanM)
+![Watch the video](https://youtu.be/DXIi5MIBfzM)
 
 
 
