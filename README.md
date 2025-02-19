@@ -121,7 +121,7 @@ This project successfully enables **brain-controlled robotic arm movement** usin
 
 🚀 **Next Steps:** Add **gesture-based controls** for more intuitive movement!
 
-## STEP BY STEP SETUP
+# STEP BY STEP SETUP
 
 # Step 01: Make a portable wifi
 ## Must be a single ESP8266 microcontroller board
