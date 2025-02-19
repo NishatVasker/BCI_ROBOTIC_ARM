@@ -123,52 +123,95 @@ This project successfully enables **brain-controlled robotic arm movement** usin
 
 ## STEP BY STEP SETUP
 
-## Step 01: Make a portable wifi
-# Must be a single ESP8266 microcontroller board
+# Step 01: Make a portable wifi
+## Must be a single ESP8266 microcontroller board
 ![router](https://github.com/user-attachments/assets/1bd71552-8082-443f-8c27-80cd60b284e4)
 
-## Step 02: Build the arm properly
-# Use PCA9685
-# Use a variable adapter
-# power supply should be stable
-# Use 3 dof to 6 of 
+# Step 02: Build the arm properly
+
+## ESP8266 to PCA9685 Servo Driver (I2C Communication)
+
+| **ESP8266 Pin** | **PCA9685 Pin** | **Purpose** |
+|---------------|---------------|------------|
+| GPIO 4 (SDA) | SDA | I2C Data Line |
+| GPIO 5 (SCL) | SCL | I2C Clock Line |
+| 3.3V | VCC | Power Supply (Logic) |
+| GND | GND | Common Ground |
+
+## PCA9685 to Servo Motors
+
+| **PCA9685 Channel** | **Connected Component** | **Signal Type** |
+|----------------|----------------------|----------------|
+| Channel 0 | Clutch Servo | PWM Signal |
+| Channel 1 | Servo 2 | PWM Signal |
+| Channel 2 | Servo 3 | PWM Signal |
+| V+ (5V) | Servos Power | 5V Power Supply |
+| GND | Servos GND | Common Ground |
+
+## ESP8266 to I2C LCD Display
+
+| **ESP8266 Pin** | **LCD Pin** | **Purpose** |
+|---------------|------------|------------|
+| GPIO 4 (SDA) | SDA | I2C Data Line |
+| GPIO 5 (SCL) | SCL | I2C Clock Line |
+| 5V | VCC | Power Supply |
+| GND | GND | Common Ground |
+
+## Power Management
+
+| **Component** | **Power Source** | **Voltage** |
+|-------------|--------------|---------|
+| ESP8266 | Micro USB or 3.3V Input | 3.3V |
+| PCA9685 | External Power Supply | 5V |
+| Servos | External Power Supply | 5V |
+| LCD | ESP8266 5V Pin | 5V |
+
+### 🔹 **Notes**
+- **Common Ground:** Ensure all components share a common ground.
+- **Servo Power:** Use an external 5V power source for servos.
+- **LCD I2C Address:**  `0x27`,  module.
+
+
+## Use a variable adapter
+## power supply should be stable
+## Use 3 DOF to 6 DOF
 ![IMG-20250220-WA0007](https://github.com/user-attachments/assets/d6ace258-7eb0-4280-ac19-78bfcb893d60)
 ![IMG-20250220-WA0008](https://github.com/user-attachments/assets/0ad52c16-194b-4c5b-8f81-b6312c2311cb)
 
 
-## Step 03: Block firewall
-# From cmd 
-# To stop the firewall in CMD as an **administrator** on Windows, use the command: "netsh advfirewall set allprofiles state off". 
-# reenable firewall "netsh advfirewall set allprofiles state on".
+# Step 03: Block firewall
+## From cmd 
+## To stop the firewall in CMD as an **administrator** on Windows, use the command: "netsh advfirewall set allprofiles state off". 
+## reenable firewall "netsh advfirewall set allprofiles state on".
 
-## Step 04: Connect with wifi
-# check the default gateway in cmd with "**ipconfig**" [there **IPv4** and **Default gateway** **IP** addresses will be shown , note that]
+# Step 04: Connect with wifi
+## check the default gateway in cmd with "**ipconfig**" [there **IPv4** and **Default gateway** **IP** addresses will be shown , note that]
 ![WhatsApp Image 2025-02-20 at 01 00 46_7fe3bae3](https://github.com/user-attachments/assets/86dd9e57-a641-4b9c-8c6b-8f24bed3e7cf)
 
 
-## Step 05: Assign the IP addresses
-# Paste the default gateway IP address in Arduino IDE, where already the robotic arm controlling code is written, pick an available IP address and write there
+# Step 05: Assign the IP addresses
+## Paste the default gateway IP address in Arduino IDE, where already the robotic arm controlling code is written, pick an available IP address and write there
 ![image](https://github.com/user-attachments/assets/861f92da-8622-4cbb-aa65-2451c4b564e8)
 
 ![image](https://github.com/user-attachments/assets/dad049c0-050e-42dd-845f-cb013d777eba)
 
 
 
-## Upload
-# Upload the code in the arm microcontroller (esp8266) with the data cable
-# Check the IP address in the LCD display
-# Connect to the server with IP
+# Step 06: Upload
+## Upload the code in the arm microcontroller (esp8266) with the data cable
+## Check the IP address in the LCD display
+## Connect to the server with IP
 ![image](https://github.com/user-attachments/assets/8c929ed8-ed98-4577-96ff-d663edc55e77)
 ![image](https://github.com/user-attachments/assets/ee082f17-52a5-4078-97e1-421c9dc9c913)
 
 
-## Connect
-# Connect the whole system(arm,PC,muse,mobile etc etc) internet on to the portable router wifi
+# Step 07: Connect
+## Connect the whole system(arm,PC,muse,mobile etc etc) internet on to the portable router wifi
 ![image](https://github.com/user-attachments/assets/3d730bc7-88c6-48c2-a742-ee2b904a7a22)
 ![WhatsApp Image 2025-02-20 at 03 25 32_b76242dd](https://github.com/user-attachments/assets/cf9bdd78-a93a-4134-ac40-36c255319642)
 
 
-## BCI 
+# Step 08: BCI 
 # Turn on mobile Bluetooth
 # Turn on the muse device
 # Turn on the Muse monitor app
@@ -190,14 +233,14 @@ This project successfully enables **brain-controlled robotic arm movement** usin
 
 # Seat in relax position
 
-## Live control
-# open the live.py folder 
+# Step 08:  Live control
+## open the live.py folder 
 ![image](https://github.com/user-attachments/assets/3793720d-50f5-4811-975e-75ea550e3f95)
 
-# write "cmd" in the search bar
+## write "cmd" in the search bar
 ![image](https://github.com/user-attachments/assets/b855c42f-5111-4e84-ad99-540ce9b77f76)
 
-# Now the system is ready to run with blink
+## Now the system is ready to run with blink
 
 ![image](https://github.com/user-attachments/assets/dd9a63f5-7801-4960-8d47-8106d84bec32)
 
